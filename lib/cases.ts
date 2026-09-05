@@ -27,6 +27,8 @@ export type CaseContent = {
 export type CaseStudy = {
   slug: string;
   published: boolean;
+  /** Site public du produit, si le lien est publiable. */
+  link?: { url: string; label: string };
   stack: string[];
   fr: CaseContent;
   en: CaseContent;
@@ -36,6 +38,7 @@ export const cases: CaseStudy[] = [
   {
     slug: "bidtender",
     published: true,
+    link: { url: "https://bidtndr.com", label: "bidtndr.com" },
     stack: ["PostgreSQL", "pgvector", "HNSW", "BM25", "Python", "FastAPI", "Azure Document Intelligence", "OpenAI", "Gemini", "Supabase", "React", "TypeScript", "Docker"],
     fr: {
       title: "RAG citable sur des documents qui cassent les pipelines",

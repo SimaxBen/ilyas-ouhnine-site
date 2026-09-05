@@ -63,6 +63,17 @@ export default async function CaseDetail({
             <div><dt>{t.role}</dt><dd style={{ fontSize: 13.5 }}>{c.role}</dd></div>
             <div><dt>{t.period}</dt><dd style={{ fontSize: 13.5 }}>{c.period}</dd></div>
           </dl>
+          {item.link && (
+            <a
+              className="btn btn--ghost"
+              href={item.link.url}
+              target="_blank"
+              rel="noreferrer noopener"
+              style={{ marginTop: 20, width: "100%" }}
+            >
+              {t.visit} — {item.link.label} ↗
+            </a>
+          )}
           <p className="kicker" style={{ margin: "22px 0 10px" }}>{t.stack}</p>
           <ul className="tags">
             {item.stack.map((s) => (

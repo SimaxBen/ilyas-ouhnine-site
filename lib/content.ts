@@ -116,7 +116,7 @@ const fr = {
     title: "Références",
     lead: "Ce qui a été construit, dans quelles contraintes, et ce que je referais autrement.",
     client: "Client", built: "Ce qui a été construit", proof: "La preuve",
-    role: "Rôle", period: "Période", stack: "Stack", results: "Résultats",
+    role: "Rôle", period: "Période", stack: "Stack", results: "Résultats", visit: "Voir le produit",
     back: "Toutes les références", next: "Référence suivante",
   },
 
@@ -277,7 +277,7 @@ const en: Dict = {
     title: "Work",
     lead: "What was built, under which constraints, and what I’d do differently.",
     client: "Client", built: "What was built", proof: "The proof",
-    role: "Role", period: "Period", stack: "Stack", results: "Results",
+    role: "Role", period: "Period", stack: "Stack", results: "Results", visit: "Visit the product",
     back: "All work", next: "Next case",
   },
 
