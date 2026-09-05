@@ -241,3 +241,10 @@ a { color: inherit; }
 .src__hd em { font-style: normal; color: var(--accent); }
 .src__q { font-size: 13px; line-height: 1.55; color: var(--n900); margin: 0; }
 .demo__ft { padding: 11px 14px; font-size: 10.5px; line-height: 1.5; color: var(--n700); }
+
+/* Planches de captures dans une reference ------------------------ */
+.shot { margin: 0 0 42px; }
+.shot:last-child { margin-bottom: 0; }
+.shot img { width: 100%; height: auto; display: block; border: 2px solid var(--ink); background: var(--paper); }
+.shot figcaption { max-width: 78ch; margin-top: 14px; padding-left: 15px; border-left: 3px solid var(--accent); font-size: 14px; line-height: 1.55; color: var(--n800); }
+.shot figcaption strong { color: var(--ink); font-weight: 800; }

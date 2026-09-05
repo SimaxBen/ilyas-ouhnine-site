@@ -17,6 +17,7 @@ export type CaseContent = {
   period: string;
   summary: string;
   proof: { v: string; l: string };
+  images?: { src: string; w: number; h: number; alt: string; caption: string }[];
   sections: CaseSection[];
   results: string[];
   redoHeading: string;
@@ -360,6 +361,14 @@ export const cases: CaseStudy[] = [
       summary:
         "Ce que ces deux applications prouvent tient en un mot : je finis. Un client qui confie un système documentaire craint de recevoir un notebook impressionnant et rien qui tourne.",
       proof: { v: "En distribution", l: "pas en prototype · Kotlin · Expo · Supabase RLS" },
+      images: [
+        { src: "/cases/lbassi.webp", w: 1700, h: 1450,
+          alt: "Lbassi — recommandation explicable, découpe hors ligne, garde-robe",
+          caption: "**Lbassi.** La recommandation affiche le raisonnement derrière son score au lieu de demander qu’on lui fasse confiance. La découpe tourne téléphone en mode avion — la barre d’état est la preuve. La garde-robe est entièrement construite par du travail fait sur l’appareil." },
+        { src: "/cases/wadrari.webp", w: 1700, h: 1450,
+          alt: "Wadrari — chat temps réel, classement, quêtes",
+          caption: "**Wadrari.** Ce qui compte n’est pas la liste des fonctionnalités, c’est où vivent les règles. Scores, progression des quêtes et accès aux messages sont décidés par des politiques Postgres et des fonctions RPC : le client peut demander, il ne peut pas décider." },
+      ],
       sections: [
         {
           heading: "Lbassi — IA embarquée d’abord",
@@ -396,6 +405,14 @@ export const cases: CaseStudy[] = [
       summary:
         "What these two apps prove comes down to one word: I finish. A client handing over a document system fears receiving an impressive notebook and nothing that runs.",
       proof: { v: "Shipped", l: "not a prototype · Kotlin · Expo · Supabase RLS" },
+      images: [
+        { src: "/cases/lbassi.webp", w: 1700, h: 1450,
+          alt: "Lbassi — explainable recommendation, offline cutout, the wardrobe",
+          caption: "**Lbassi.** The recommendation shows the reasoning behind its score instead of asking you to trust it. The cutout runs with the phone in airplane mode — the status bar is the proof. The wardrobe is built entirely from work done on the device." },
+        { src: "/cases/wadrari.webp", w: 1700, h: 1450,
+          alt: "Wadrari — real-time chat, leaderboard, quests",
+          caption: "**Wadrari.** The interesting part isn’t the feature list, it’s where the rules live. Scores, quest progress and message access are decided by Postgres row-level policies and RPC functions: the client can request, it cannot decide." },
+      ],
       sections: [
         {
           heading: "Lbassi — on-device AI first",

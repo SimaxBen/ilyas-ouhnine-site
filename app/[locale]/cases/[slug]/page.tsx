@@ -72,6 +72,19 @@ export default async function CaseDetail({
         </div>
       </section>
 
+      {c.images && (
+        <section className="band sec">
+          <div className="wrap">
+            {c.images.map((im) => (
+              <figure className="shot" key={im.src}>
+                <img src={im.src} alt={im.alt} width={im.w} height={im.h} loading="lazy" />
+                <figcaption><Rich text={im.caption} /></figcaption>
+              </figure>
+            ))}
+          </div>
+        </section>
+      )}
+
       <section className="band sec">
         <div className="wrap">
           <div className="prose">
