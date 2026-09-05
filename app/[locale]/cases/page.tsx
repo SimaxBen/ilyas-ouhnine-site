@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { content } from "@/lib/content";
 import { publishedCases } from "@/lib/cases";
-import { CaseLink } from "@/components/CaseLink";
+import { RefRow } from "@/components/RefRow";
 import { toLocale } from "@/lib/i18n";
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
@@ -16,14 +16,13 @@ export default async function CasesPage({ params }: { params: Promise<{ locale: 
   const t = content[locale].cases;
 
   return (
-    <section className="section">
+    <section className="band sec">
       <div className="wrap">
-        <hr className="rule" />
-        <h1 className="h1">{t.title}</h1>
-        <p className="lead" style={{ marginTop: "1.2rem" }}>{t.lead}</p>
-        <div style={{ marginTop: "3rem" }}>
+        <h1 className="h2">{t.title}</h1>
+        <p className="tiny" style={{ marginTop: 12, maxWidth: "60ch" }}>{t.lead}</p>
+        <div className="refs" style={{ marginTop: 30 }}>
           {publishedCases.map((item) => (
-            <CaseLink key={item.slug} item={item} locale={locale} more={content[locale].nav.cases} />
+            <RefRow key={item.slug} item={item} locale={locale} />
           ))}
         </div>
       </div>

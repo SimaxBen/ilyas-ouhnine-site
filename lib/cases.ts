@@ -16,6 +16,7 @@ export type CaseContent = {
   role: string;
   period: string;
   summary: string;
+  proof: { v: string; l: string };
   sections: CaseSection[];
   results: string[];
   redoHeading: string;
@@ -42,6 +43,7 @@ export const cases: CaseStudy[] = [
       period: "Depuis septembre 2025",
       summary:
         "Un dossier de consultation marocain arrive en dix à trente fichiers — PDF, Word, Excel, plans AutoCAD — en français et en arabe, souvent scannés, jusqu’à 3 592 pages pour un seul marché. J’ai construit le système qui les lit, avec chaque valeur extraite rattachée à l’extrait de texte qui l’a produite.",
+      proof: { v: "4 h → 40 min", l: "dépouillement d’un dossier · 10 → 30 dossiers/mois, effectif constant" },
       sections: [
         {
           heading: "Le problème",
@@ -99,6 +101,7 @@ export const cases: CaseStudy[] = [
       period: "Since September 2025",
       summary:
         "A Moroccan public tender file arrives as ten to thirty documents — PDF, Word, Excel, AutoCAD drawings — in French and Arabic, often scanned, up to 3,592 pages for a single contract. I built the system that reads them, with every extracted value tied back to the passage that produced it.",
+      proof: { v: "4 h → 40 min", l: "to triage a file · 10 → 30 files/month, same headcount" },
       sections: [
         {
           heading: "The problem",
@@ -162,6 +165,7 @@ export const cases: CaseStudy[] = [
       period: "Septembre 2023 — février 2024",
       summary:
         "Une plateforme cosmétique recommandait par segments figés, en ignorant tout le texte qu’elle possédait déjà. Passage à une recommandation par personne, en temps réel, construite sur de la récupération documentaire — et explicable par l’équipe métier.",
+      proof: { v: "+15 %", l: "taux de conversion · −20 % de cycle d’analyse" },
       sections: [
         {
           heading: "Le problème",
@@ -206,6 +210,7 @@ export const cases: CaseStudy[] = [
       period: "September 2023 — February 2024",
       summary:
         "A cosmetics platform was recommending from frozen segments while ignoring all the text it already owned. Moved to per-person, real-time recommendation built on retrieval — and explainable by the business team.",
+      proof: { v: "+15%", l: "conversion rate · −20% analysis cycle" },
       sections: [
         {
           heading: "The problem",
@@ -258,6 +263,7 @@ export const cases: CaseStudy[] = [
       period: "Depuis novembre 2024",
       summary:
         "Cinq flux temps réel hétérogènes, cinq protocoles, cinq notions du temps — unifiés en une plateforme sur laquelle des ingénieurs d’exploitation prennent des décisions tous les matins.",
+      proof: { v: "5 → 1", l: "protocoles unifiés · OPC UA · Modbus · MQTT · SFTP · API" },
       sections: [
         {
           heading: "Le problème",
@@ -302,6 +308,7 @@ export const cases: CaseStudy[] = [
       period: "Since November 2024",
       summary:
         "Five heterogeneous real-time streams, five protocols, five notions of time — unified into one platform that plant engineers make decisions on every morning.",
+      proof: { v: "5 → 1", l: "protocols unified · OPC UA · Modbus · MQTT · SFTP · API" },
       sections: [
         {
           heading: "The problem",
@@ -352,6 +359,7 @@ export const cases: CaseStudy[] = [
       period: "Projets personnels",
       summary:
         "Ce que ces deux applications prouvent tient en un mot : je finis. Un client qui confie un système documentaire craint de recevoir un notebook impressionnant et rien qui tourne.",
+      proof: { v: "En distribution", l: "pas en prototype · Kotlin · Expo · Supabase RLS" },
       sections: [
         {
           heading: "WardropAI — IA embarquée d’abord",
@@ -387,6 +395,7 @@ export const cases: CaseStudy[] = [
       period: "Personal projects",
       summary:
         "What these two apps prove comes down to one word: I finish. A client handing over a document system fears receiving an impressive notebook and nothing that runs.",
+      proof: { v: "Shipped", l: "not a prototype · Kotlin · Expo · Supabase RLS" },
       sections: [
         {
           heading: "WardropAI — on-device AI first",

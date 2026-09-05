@@ -1,4 +1,3 @@
-import Link from "next/link";
 import { content } from "@/lib/content";
 import { site } from "@/lib/config";
 import type { Locale } from "@/lib/i18n";
@@ -6,18 +5,26 @@ import type { Locale } from "@/lib/i18n";
 export function Footer({ locale }: { locale: Locale }) {
   const t = content[locale];
   return (
-    <footer className="site-footer">
-      <div className="wrap site-footer__inner">
+    <footer className="ftr">
+      <div className="ftr__in">
         <div>
-          <p style={{ marginBottom: "0.4rem" }}>{t.footer.tagline}</p>
-          <p className="small">
-            © {new Date().getFullYear()} Ilyas Ouhnine. {t.footer.rights}
-          </p>
+          <b>Ilyas Ouhnine</b>
+          <br />
+          {t.footer.tagline}
         </div>
-        <div className="footer-links">
+        <div>
+          Casablanca, Maroc
+          <br />
+          UTC+1 — {locale === "fr" ? "même fuseau que Paris" : "same time zone as Paris"}
+          <br />
           <a href={`mailto:${site.email}`}>{site.email}</a>
+        </div>
+        <div>
+          © {new Date().getFullYear()} · {t.footer.rights}
+          <br />
           <a href={site.linkedin} target="_blank" rel="noreferrer noopener">LinkedIn</a>
-          <Link href={`/${locale}/contact`}>{t.nav.contact}</Link>
+          {" · "}
+          <a href={site.github} target="_blank" rel="noreferrer noopener">GitHub</a>
         </div>
       </div>
     </footer>

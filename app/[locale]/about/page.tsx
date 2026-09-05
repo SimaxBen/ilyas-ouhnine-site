@@ -14,49 +14,40 @@ export default async function AboutPage({ params }: { params: Promise<{ locale: 
   const { locale: raw } = await params;
   const locale = toLocale(raw);
   const t = content[locale].about;
+  const nav = content[locale].nav;
 
   return (
     <>
-      <section className="section">
-        <div className="wrap">
-          <hr className="rule" />
-          <h1 className="h1">{t.title}</h1>
-          <p className="lead" style={{ marginTop: "1.4rem" }}>{t.lead}</p>
-          <div className="prose" style={{ marginTop: "2.6rem" }}>
+      <section className="band split" style={{ gridTemplateColumns: "1.35fr 1fr" }}>
+        <div>
+          <h1 className="h2">{t.title}</h1>
+          <p className="lead" style={{ margin: "18px 0 26px", maxWidth: "50ch" }}>{t.lead}</p>
+          <div className="prose">
             {t.body.map((p, i) => (
-              <p key={i} style={{ color: "var(--ink-soft)" }}>{p}</p>
+              <p key={i}>{p}</p>
             ))}
           </div>
         </div>
-      </section>
-
-      <section className="section section--alt">
-        <div className="wrap">
-          <hr className="rule" />
-          <h2 className="h2" style={{ marginBottom: "2rem" }}>{t.factsTitle}</h2>
-          <dl className="facts" style={{ maxWidth: "52rem" }}>
+        <div style={{ background: "var(--surface)" }}>
+          <p className="kicker">{t.factsTitle}</p>
+          <dl className="dl" style={{ margin: 0 }}>
             {t.facts.map(([k, v]) => (
-              <div key={k}>
+              <div key={k} style={{ gridTemplateColumns: "1fr" }}>
                 <dt>{k}</dt>
-                <dd>{v}</dd>
+                <dd style={{ fontSize: 13.5 }}>{v}</dd>
               </div>
             ))}
           </dl>
         </div>
       </section>
 
-      <section className="section">
+      <section className="band band--surface sec">
         <div className="wrap">
-          <hr className="rule" />
-          <h2 className="h2">{t.notTitle}</h2>
-          <p className="lead" style={{ marginTop: "1.1rem" }}>{t.notBody}</p>
-          <div className="btn-row" style={{ marginTop: "2.2rem" }}>
-            <a className="btn" href={site.cal} target="_blank" rel="noreferrer noopener">
-              {content[locale].home.ctaPrimary}
-            </a>
-            <Link className="btn btn--ghost" href={`/${locale}/cases`}>
-              {content[locale].nav.cases}
-            </Link>
+          <h2 className="h2" style={{ maxWidth: "18ch" }}>{t.notTitle}</h2>
+          <p className="lead" style={{ marginTop: 16, maxWidth: "70ch" }}>{t.notBody}</p>
+          <div className="btns" style={{ marginTop: 26 }}>
+            <a className="btn" href={site.cal} target="_blank" rel="noreferrer noopener">{content[locale].home.ctaPrimary}</a>
+            <Link className="btn btn--ghost" href={`/${locale}/cases`}>{nav.cases}</Link>
           </div>
         </div>
       </section>

@@ -4,7 +4,7 @@ import { locales } from "@/lib/i18n";
 import { publishedCases } from "@/lib/cases";
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const paths = ["", "/cases", "/about", "/contact"];
+  const paths = ["", "/cases", "/method", "/about", "/contact"];
   const entries: MetadataRoute.Sitemap = [];
   for (const locale of locales) {
     for (const p of paths) {
