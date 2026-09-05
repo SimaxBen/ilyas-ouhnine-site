@@ -354,7 +354,7 @@ export const cases: CaseStudy[] = [
     stack: ["Kotlin", "Jetpack Compose", "ML Kit", "Room", "Hilt", "Expo", "React Native", "TypeScript", "Supabase", "RLS"],
     fr: {
       title: "Deux produits mobiles conçus, construits et publiés en solo",
-      kicker: "WardropAI · Wadrari",
+      kicker: "Lbassi · Wadrari",
       role: "Conception, développement et distribution",
       period: "Projets personnels",
       summary:
@@ -362,7 +362,7 @@ export const cases: CaseStudy[] = [
       proof: { v: "En distribution", l: "pas en prototype · Kotlin · Expo · Supabase RLS" },
       sections: [
         {
-          heading: "WardropAI — IA embarquée d’abord",
+          heading: "Lbassi — IA embarquée d’abord",
           body: [
             "Une application de garde-robe suppose des photos de vos vêtements et de vous. La plupart envoient tout dans le cloud. Ici, découpe d’image et recommandation tournent hors ligne, sur l’appareil, et le réseau n’est sollicité que pour ce qui l’exige réellement.",
             "La règle de routage — quoi en local, quoi à distance — est la vraie décision de conception. C’est exactement la question qu’on se pose sur un système RAG en entreprise : qu’est-ce qui doit sortir du périmètre, et pourquoi ? Les recommandations sont explicables : l’utilisateur voit sur quoi la suggestion s’appuie.",
@@ -390,7 +390,7 @@ export const cases: CaseStudy[] = [
     },
     en: {
       title: "Two mobile products designed, built and shipped solo",
-      kicker: "WardropAI · Wadrari",
+      kicker: "Lbassi · Wadrari",
       role: "Design, development and distribution",
       period: "Personal projects",
       summary:
@@ -398,7 +398,7 @@ export const cases: CaseStudy[] = [
       proof: { v: "Shipped", l: "not a prototype · Kotlin · Expo · Supabase RLS" },
       sections: [
         {
-          heading: "WardropAI — on-device AI first",
+          heading: "Lbassi — on-device AI first",
           body: [
             "A wardrobe app implies photos of your clothes and of you. Most send everything to the cloud. Here, image cutout and recommendation run offline, on the device, and the network is only used for what genuinely requires it.",
             "The routing rule — what stays local, what goes remote — is the real design decision. It is exactly the question you face on an enterprise RAG system: what has to leave the perimeter, and why? Recommendations are explainable: the user sees what the suggestion rests on.",
