@@ -266,3 +266,28 @@ a { color: inherit; }
    declaration `.menu { display: flex }` de la media query l'emporte sur le
    `display: none` de l'agent utilisateur et le menu reste ouvert. */
 .menu[hidden] { display: none; }
+
+/* Écrits --------------------------------------------------------- */
+.art-pre {
+  font-family: var(--mono); font-size: 12px; line-height: 1.6; white-space: pre;
+  overflow-x: auto; background: var(--surface); border-left: 3px solid var(--accent);
+  padding: 18px 20px; margin: 22px 0; color: var(--ink);
+}
+.art-tw { overflow-x: auto; margin: 22px 0; }
+.art-table { border-collapse: collapse; width: 100%; font-size: 13.5px; min-width: 420px; }
+.art-table th {
+  text-align: left; font-size: 10.5px; font-weight: 600; letter-spacing: .12em;
+  text-transform: uppercase; color: var(--accent); padding: 8px 14px 8px 0;
+  border-bottom: var(--rule); white-space: nowrap;
+}
+.art-table td { padding: 9px 14px 9px 0; border-bottom: var(--hair); color: var(--n800); vertical-align: top; }
+.art-table tr:last-child td { border-bottom: var(--rule); }
+.art-table td:last-child, .art-table th:last-child { padding-right: 0; }
+
+.art h2 { font-size: clamp(19px, 2.1vw, 24px); font-weight: 800; letter-spacing: -0.02em; line-height: 1.15; margin: 40px 0 14px; }
+.art h2:first-child { margin-top: 0; }
+.art p { margin: 0 0 15px; font-size: 15.5px; line-height: 1.66; color: var(--n800); max-width: 68ch; }
+.art > section:first-child h2 { margin-top: 0; }
+
+.art-meta { display: flex; flex-wrap: wrap; gap: 8px 18px; font-size: 11px; font-weight: 600;
+  letter-spacing: .1em; text-transform: uppercase; color: var(--n700); }

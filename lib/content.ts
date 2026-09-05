@@ -1,7 +1,7 @@
 import type { Locale } from "./i18n";
 
 const fr = {
-  nav: { home: "Accueil", offers: "Offres", cases: "Références", method: "Méthode", about: "À propos", contact: "Contact", book: "Réserver 30 min" },
+  nav: { home: "Accueil", offers: "Offres", cases: "Références", writing: "Écrits", method: "Méthode", about: "À propos", contact: "Contact", book: "Réserver 30 min" },
   switchTo: "en",
   brandSub: "Produits IA · de bout en bout",
 
@@ -162,6 +162,18 @@ const fr = {
     ctaBody: "Si vous hésitez entre deux, c’est en général la première. Trente minutes suffisent pour trancher.",
   },
 
+  writing: {
+    title: "Écrits",
+    lead: "Deux problèmes que j’ai résolus en production, écrits avec les chiffres qui les ont tranchés — les échecs de la première tentative compris. Ni tutoriel, ni tour d’horizon.",
+    readSuffix: "min de lecture",
+    readOne: "Lire",
+    back: "Tous les écrits",
+    next: "Article suivant",
+    tagsLabel: "Sujets",
+    noteTitle: "Sur les chiffres de ces articles",
+    noteBody: "Tous les nombres cités viennent de bancs et de validations internes, datés, sur des populations entières et non sur des échantillons choisis. Le domaine d’application est une preuve, pas un marché : je ne prends pas de mission en marchés publics.",
+  },
+
   method: {
     title: "La méthode",
     lead: "Cinq principes, tous appris en cassant quelque chose.",
@@ -239,7 +251,7 @@ const fr = {
 type Dict = typeof fr;
 
 const en: Dict = {
-  nav: { home: "Home", offers: "Offers", cases: "Work", method: "Method", about: "About", contact: "Contact", book: "Book 30 min" },
+  nav: { home: "Home", offers: "Offers", cases: "Work", writing: "Writing", method: "Method", about: "About", contact: "Contact", book: "Book 30 min" },
   switchTo: "fr",
   brandSub: "AI products · end to end",
 
@@ -398,6 +410,18 @@ const en: Dict = {
     notBody: "No public procurement or tendering — that’s my own company’s field. No digital twins or industrial AI — that’s my employer’s. No engagement where nobody can tell me how we’ll know it worked. And no extra pair of hands inside an existing team: I take responsibility for a scope, not a slot in a schedule.",
     ctaTitle: "Which of the three do you recognise?",
     ctaBody: "If you’re hesitating between two, it’s usually the first. Thirty minutes is enough to settle it.",
+  },
+
+  writing: {
+    title: "Writing",
+    lead: "Two problems solved in production, written up with the numbers that settled them — including the first attempt that failed. Neither a tutorial nor an overview.",
+    readSuffix: "min read",
+    readOne: "Read",
+    back: "All writing",
+    next: "Next article",
+    tagsLabel: "Topics",
+    noteTitle: "About the numbers in these articles",
+    noteBody: "Every figure quoted comes from dated internal benchmarks and validations, run on whole populations rather than hand-picked samples. The application domain is a proof, not a market: I do not take public-procurement engagements.",
   },
 
   method: {

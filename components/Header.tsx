@@ -17,6 +17,7 @@ export function Header({ locale }: { locale: Locale }) {
   const links = [
     { href: `/${locale}/offers`, label: t.offers },
     { href: `/${locale}/cases`, label: t.cases },
+    { href: `/${locale}/writing`, label: t.writing },
     { href: `/${locale}/method`, label: t.method },
     { href: `/${locale}/about`, label: t.about },
     { href: `/${locale}/contact`, label: t.contact },
