@@ -18,7 +18,7 @@ const fr = {
     score: [
       { v: "45 000", l: "fichiers en production · 56 Go", hi: false },
       { v: "274 376", l: "citations de provenance", hi: true },
-      { v: "90,4 %", l: "exactitude · jeu annoté à la main", hi: false },
+      { v: "90 %+", l: "exactitude · jeu annoté à la main", hi: false },
       { v: "1 ms", l: "recherche sur 113 000 vecteurs", hi: false },
     ],
 
@@ -179,7 +179,7 @@ const en: Dict = {
     score: [
       { v: "45,000", l: "files in production · 56 GB", hi: false },
       { v: "274,376", l: "provenance citations", hi: true },
-      { v: "90.4%", l: "accuracy · hand-annotated set", hi: false },
+      { v: "90%+", l: "accuracy · hand-annotated set", hi: false },
       { v: "1 ms", l: "search over 113,000 vectors", hi: false },
     ],
 
