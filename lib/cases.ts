@@ -39,15 +39,15 @@ export const cases: CaseStudy[] = [
     slug: "bidtender",
     published: true,
     link: { url: "https://bidtndr.com", label: "bidtndr.com" },
-    stack: ["PostgreSQL", "pgvector", "HNSW", "BM25", "Python", "FastAPI", "Azure Document Intelligence", "OpenAI", "Gemini", "Supabase", "React", "TypeScript", "Docker"],
+    stack: ["PostgreSQL", "pgvector", "HNSW", "BM25", "Python", "FastAPI", "Redis", "ARQ", "Playwright", "Azure Document Intelligence", "Tesseract", "OpenAI", "Gemini", "Supabase", "React", "TypeScript", "Datadog", "Docker"],
     fr: {
-      title: "RAG citable sur des documents qui cassent les pipelines",
+      title: "Un produit IA entier, construit et exploité seul",
       kicker: "BidTender — SaaS multi-tenant",
       role: "Co-fondateur · ingénieur IA et full-stack",
       period: "Depuis septembre 2025",
       summary:
-        "Un dossier de consultation marocain arrive en dix à trente fichiers — PDF, Word, Excel, plans AutoCAD — en français et en arabe, souvent scannés, jusqu’à 3 592 pages pour un seul marché. J’ai construit le système qui les lit, avec chaque valeur extraite rattachée à l’extrait de texte qui l’a produite.",
-      proof: { v: "4 h → 40 min", l: "dépouillement d’un dossier · 10 → 30 dossiers/mois, effectif constant" },
+        "Un SaaS multi-tenant pour répondre aux marchés publics marocains : le scraping quotidien qui va chercher les dossiers, l’OCR bilingue qui les lit, la recherche citable, l’extraction structurée, les moteurs de décision, la génération des pièces à rendre, le tunnel commercial et la facturation. 84 routeurs d’API et 300 modules métier, écrits et exploités par une seule personne.",
+      proof: { v: "1 personne", l: "84 routeurs d’API · 300 modules métier · en production" },
       sections: [
         {
           heading: "Le problème",
@@ -78,8 +78,32 @@ export const cases: CaseStudy[] = [
             "**Traitement asynchrone avec reprise.** Le vrai travail n’est pas la file d’attente : c’est qu’un document qui échoue à la page 180 reprenne là où il s’est arrêté au lieu de repayer 180 pages d’OCR.",
           ],
         },
+        {
+          heading: "Au-delà de la lecture — ce que la plateforme fait vraiment",
+          body: [
+            "La recherche citable est la partie visible. Elle représente une dizaine de modules sur 300. Le reste est ce qui sépare une démonstration d’un produit qu’on facture.",
+            "**Remplir des formulaires officiels sans gabarit.** Les pièces à rendre sont des formulaires administratifs dont chaque acheteur a sa variante. Plutôt que de maintenir un gabarit par formulaire, le système détecte géométriquement les zones à remplir, induit quel champ va dans quelle zone, produit le document rempli, puis vérifie le rendu au pixel avant de le proposer à la relecture. C’est le seul endroit du produit où l’analyse d’image, la géométrie et la validation comptent plus que le modèle de langue.",
+            "**Déduire la règle à partir du résultat.** Les procès-verbaux publient le gagnant, mais pas toujours la méthode d’attribution appliquée. Un moteur la déduit : huit signaux calculés sur les seules offres recevables, un arbre de décision, un score de confiance honnête qui préfère répondre « indéterminé » plutôt que de deviner. Validé sur 100 marchés réels : la première version ne passait le seuil de confiance que sur 4 cas, la seconde sur 38, sans aucun faux positif — et elle a mis au jour 7 erreurs d’étiquetage du collecteur que personne n’avait vues.",
+            "**Un coût par requête, connu et pilotable.** Toutes les questions ne méritent pas le même modèle. Un classifieur d’intention de quelques dizaines de jetons, mis en cache par empreinte de la question, envoie les demandes factuelles vers un palier bien moins cher — un rapport d’environ cinquante à un. Derrière un interrupteur, mesuré par client, et coupable sans redéploiement si la qualité bouge.",
+            "**Des garde-fous, pas seulement des consignes.** Les extraits retenus sont inspectés avant d’atteindre le modèle : les passages qui tentent de détourner l’assistant sont écartés et journalisés, ce qui permet de savoir quels documents déposés essaient de le faire. En parallèle, un mode rigueur relit la réponse phrase par phrase contre ses sources et signale visuellement ce qui n’est pas soutenu.",
+            "**Générer les documents, pas seulement les lire.** Mémoires techniques, présentations avec charte et score de qualité, exports PDF et Word, et l’assemblage des pièces en une enveloppe prête à déposer.",
+            "**Le tunnel commercial, construit dedans.** Détection et enrichissement des prospects, machine à états du pipeline qui interdit les transitions illégales, scoring, séquences de relance — et un filtrage de visibilité par rôle appliqué en base : un commercial ne voit que ses dossiers, un manager son périmètre.",
+          ],
+        },
+        {
+          heading: "Le socle",
+          body: [
+            "**L’isolation.** Sécurité au niveau des lignes côté base avec ses fonctions d’aide, matrice (fonction, rôle) côté application, et le filtre locataire poussé à l’intérieur de la requête de recherche plutôt qu’appliqué après.",
+            "**Le chemin chaud.** La vérification du jeton passe par quatre niveaux de cache — requête, processus, Redis partagé, base en dernier recours — parce qu’on ne peut pas payer une requête d’authentification à chaque appel d’API.",
+            "**Les traitements longs.** File d’attente avec reprise, progression poussée en temps réel vers l’interface, et rien à recommencer quand un document échoue en cours de route.",
+            "**Ce qu’on facture.** Plans, abonnements, compteurs d’usage, quotas, crédits, factures et paiements — un produit qui ne sait pas compter ce qu’il consomme ne sait pas ce qu’il vaut.",
+            "**Ce qu’on peut prouver.** Journal d’audit des actions, traces et journaux applicatifs, alertes de dépassement, et un tableau de bord interne qui corrèle les signaux du dépôt de code, de la supervision et de la base pour suivre ce qui avance réellement.",
+          ],
+        },
       ],
       results: [
+        "84 routeurs d’API et 300 modules métier en production, écrits et exploités seul — comptés dans le dépôt le 5 septembre 2026",
+        "Moteur d’inférence de la méthode d’attribution validé sur 100 marchés réels : 38 classés à haute confiance après affinage, 9 cas « au rabais » sur 9 correctement identifiés, aucun faux positif, et 7 erreurs d’étiquetage du collecteur détectées",
         "45 000 fichiers traités en production, 40 800 documents distincts, 56 Go — PDF, Word, Excel, plans AutoCAD",
         "Plus de 250 000 pages comptées · dossier médian 58 pages · plus gros dossier rencontré 3 592 pages sur 32 fichiers",
         "274 376 citations de provenance sur 58 champs, dont 99,95 % avec l’extrait verbatim",
@@ -96,16 +120,17 @@ export const cases: CaseStudy[] = [
         "**Le jeu d’évaluation avant le pipeline.** Pendant des mois, « est-ce que c’est meilleur ? » se jugeait à l’œil sur quelques requêtes familières. Le jeu de référence existe aujourd’hui — 30 dossiers stratifiés entre natifs, scannés et plus de cent pages, tirés de façon déterministe pour que n’importe qui puisse rejouer exactement le même échantillon. Deux jours de travail qui auraient rendu chaque décision mesurable au lieu d’opinable. Je le referais en premier.",
         "**J’ai sous-estimé les tableaux.** Le texte au fil de l’eau se règle vite ; les bordereaux de prix, où la structure de la grille est l’information, ont demandé une chaîne de traitement entièrement séparée. Aujourd’hui, sur un corpus inconnu, ma première question est : quelle part de votre information vit dans des tableaux ? La réponse change le plan de charge du simple au double.",
         "**Le silence aurait dû être un objectif produit dès le départ.** Un système qui répond toujours est un système qui invente parfois — le seul mode de défaillance vraiment grave sur une pièce contractuelle. En faire une réponse correcte et assumée est autant un travail d’interface que de modèle, et je l’ai traité trop tard.",
+        "**J’ai mesuré le coût par requête bien trop tard.** Pendant longtemps, la dépense en modèles était une ligne globale à la fin du mois : impossible de dire quelle fonctionnalité coûtait quoi, ni quel client était rentable. Le routage par intention et le suivi par requête ont été ajoutés après coup, alors qu’ils auraient dû être là dès la première mise en ligne — ils changent les décisions produit, pas seulement la facture.",
       ],
     },
     en: {
-      title: "Citable RAG on documents that break pipelines",
+      title: "A whole AI product, built and run alone",
       kicker: "BidTender — multi-tenant SaaS",
       role: "Co-founder · AI and full-stack engineer",
       period: "Since September 2025",
       summary:
-        "A Moroccan public tender file arrives as ten to thirty documents — PDF, Word, Excel, AutoCAD drawings — in French and Arabic, often scanned, up to 3,592 pages for a single contract. I built the system that reads them, with every extracted value tied back to the passage that produced it.",
-      proof: { v: "4 h → 40 min", l: "to triage a file · 10 → 30 files/month, same headcount" },
+        "A multi-tenant SaaS for bidding on Moroccan public tenders: the daily scraping that fetches the files, the bilingual OCR that reads them, citable retrieval, structured extraction, decision engines, generation of the documents to submit, the sales funnel and billing. 84 API routers and 300 business-logic modules, written and operated by one person.",
+      proof: { v: "1 person", l: "84 API routers · 300 business modules · in production" },
       sections: [
         {
           heading: "The problem",
@@ -136,8 +161,32 @@ export const cases: CaseStudy[] = [
             "**Asynchronous processing with resume.** The real engineering is not the queue: it is that a document failing at page 180 restarts there instead of paying for 180 pages of OCR again.",
           ],
         },
+        {
+          heading: "Beyond reading — what the platform actually does",
+          body: [
+            "Citable retrieval is the visible part. It accounts for around ten modules out of 300. The rest is what separates a demo from a product you can invoice.",
+            "**Filling official forms without templates.** The documents to submit are administrative forms, and every buyer has their own variant. Rather than maintaining one template per form, the system detects the fillable areas geometrically, infers which field belongs in which area, renders the completed document, then verifies the render pixel by pixel before sending it for review. It is the one place in the product where image analysis, geometry and validation matter more than the language model.",
+            "**Inferring the rule from the outcome.** Award minutes publish the winner but not always the attribution method that was applied. An engine infers it: eight signals computed over admissible bids only, a decision tree, and an honest confidence score that would rather answer “undetermined” than guess. Validated on 100 real contracts: the first version cleared the confidence threshold on only 4 cases, the second on 38, with no false positives — and it surfaced 7 labelling errors in the collector that nobody had spotted.",
+            "**A known, steerable cost per request.** Not every question deserves the same model. An intent classifier costing a few dozen tokens, cached by question fingerprint, routes factual requests to a far cheaper tier — roughly fifty to one. Behind a switch, measured per customer, and switchable off without a redeploy if quality moves.",
+            "**Guardrails, not just prompts.** Retrieved passages are inspected before they reach the model: text that tries to hijack the assistant is filtered out and logged, which also reveals which uploaded documents attempt it. Alongside it, a rigour mode re-reads the answer sentence by sentence against its sources and visually flags whatever is unsupported.",
+            "**Generating documents, not only reading them.** Technical memoranda, brand-consistent decks with a quality score, PDF and Word exports, and the assembly of every required document into a submission-ready envelope.",
+            "**The sales funnel, built inside.** Prospect discovery and enrichment, a pipeline state machine that forbids illegal transitions, scoring, follow-up cadences — and role-based visibility filtering applied in the database: a rep sees only their own accounts, a manager sees their scope.",
+          ],
+        },
+        {
+          heading: "The foundation",
+          body: [
+            "**Isolation.** Row-level security in the database with its helper functions, a (feature, role) matrix in the application, and the tenant filter pushed inside the retrieval query rather than applied after it.",
+            "**The hot path.** Token verification goes through four cache levels — request, process, shared Redis, database as a last resort — because you cannot pay for an authentication query on every API call.",
+            "**Long jobs.** A queue with resume, progress pushed live to the interface, and nothing to redo when a document fails midway.",
+            "**What gets invoiced.** Plans, subscriptions, usage counters, quotas, credits, invoices and payments — a product that cannot count what it consumes does not know what it is worth.",
+            "**What can be proven.** An action audit log, application traces and logs, overrun alerts, and an internal dashboard that correlates signals from the code repository, monitoring and the database to track what is actually moving.",
+          ],
+        },
       ],
       results: [
+        "84 API routers and 300 business-logic modules in production, written and operated alone — counted in the repository on 5 September 2026",
+        "Attribution-method inference engine validated on 100 real contracts: 38 classified at high confidence after refinement, 9 of 9 “discount” cases correctly identified, no false positives, and 7 collector labelling errors surfaced",
         "45,000 files processed in production, 40,800 distinct documents, 56 GB — PDF, Word, Excel, AutoCAD drawings",
         "Over 250,000 pages counted · median file 58 pages · largest encountered 3,592 pages across 32 documents",
         "274,376 provenance citations across 58 fields, 99.95 % carrying the verbatim excerpt",
@@ -154,6 +203,7 @@ export const cases: CaseStudy[] = [
         "**Build the evaluation set before the pipeline.** For months, “is this better?” was judged by eye on a handful of familiar queries. The reference set exists today — 30 files stratified across native, scanned and hundred-page-plus, drawn deterministically so anyone can replay exactly the same sample. Two days of work that would have made every decision measurable instead of arguable. I’d do it first.",
         "**I underestimated tables.** Flowing text settles quickly; price schedules, where the grid structure is the information, needed an entirely separate processing chain. On an unfamiliar corpus my first question is now: how much of your information lives in tables? The answer doubles or halves the estimate.",
         "**Silence should have been a product goal from the start.** A system that always answers is a system that sometimes invents — the only truly serious failure mode on a contractual document. Making “not in this file” a correct, deliberate answer is as much interface work as model work, and I got to it too late.",
+        "**I measured cost per request far too late.** For a long time the model spend was a single line at the end of the month: no way to say which feature cost what, or which customer was profitable. Intent routing and per-request tracking were bolted on afterwards, when they should have been there from the first release — they change product decisions, not just the invoice.",
       ],
     },
   },

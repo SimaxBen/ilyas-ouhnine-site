@@ -7,6 +7,6 @@ export const site = {
   cal: "https://cal.com/ilyas-ouhnine",
   location: "Casablanca, Maroc",
   timezone: "UTC+1 — meme fuseau que Paris",
-  rateFrom: "8 000 €",
-  dayRate: "500 €",
+  rateFrom: "12 000 €",
+  dayRate: "600 €",
 } as const;

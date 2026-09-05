@@ -25,7 +25,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
           <p className="lead" style={{ margin: "26px 0 0", maxWidth: "46ch" }}>{t.lead}</p>
           <div className="btns" style={{ marginTop: 28 }}>
             <a className="btn" href={site.cal} target="_blank" rel="noreferrer noopener">{t.ctaPrimary}</a>
-            <Link className="btn btn--ghost" href={`/${locale}/cases`}>{t.ctaSecondary}</Link>
+            <Link className="btn btn--ghost" href={`/${locale}/offers`}>{t.ctaSecondary}</Link>
           </div>
           <p className="tiny" style={{ marginTop: 24, paddingTop: 16, borderTop: "var(--hair)" }}>{t.priceLine}</p>
         </div>
@@ -86,12 +86,21 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
       {/* Offres */}
       <section className="band band--surface sec">
         <div className="wrap">
-          <h2 className="h2">{t.offerTitle}</h2>
-          <ol className="num" style={{ margin: "30px 0 0", padding: 0 }}>
+          <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline", gap: 20, flexWrap: "wrap" }}>
+            <h2 className="h2">{t.offerTitle}</h2>
+            <Link href={`/${locale}/offers`} className="kicker kicker--accent" style={{ margin: 0, textDecoration: "none" }}>
+              {t.offersAll} →
+            </Link>
+          </div>
+          <p className="tiny" style={{ marginTop: 12, maxWidth: "62ch" }}>{t.offerLead}</p>
+          <ol className="num" style={{ margin: "28px 0 0", padding: 0 }}>
             {t.offers.map((o, i) => (
               <li key={o.title}>
                 <span className="n">{String(i + 1).padStart(2, "0")}</span>
-                <h3 className="h3">{o.title}</h3>
+                <Link href={`/${locale}/offers`} className="home-offer" style={{ color: "inherit", textDecoration: "none" }}>
+                  <b>{o.price}</b>
+                  <h3 className="h3" style={{ margin: 0 }}>{o.title}</h3>
+                </Link>
                 <p>{o.body}</p>
               </li>
             ))}

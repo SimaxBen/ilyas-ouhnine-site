@@ -15,6 +15,7 @@ export function Header({ locale }: { locale: Locale }) {
   const swapped = pathname.replace(new RegExp(`^/${locale}`), `/${other}`);
 
   const links = [
+    { href: `/${locale}/offers`, label: t.offers },
     { href: `/${locale}/cases`, label: t.cases },
     { href: `/${locale}/method`, label: t.method },
     { href: `/${locale}/about`, label: t.about },
@@ -26,7 +27,7 @@ export function Header({ locale }: { locale: Locale }) {
       <div className="hdr__in">
         <Link href={`/${locale}`} className="brand" onClick={() => setOpen(false)}>
           <span className="sq" style={{ margin: 0 }} />
-          Ilyas Ouhnine <s>RAG · Intelligence documentaire</s>
+          Ilyas Ouhnine <s>{content[locale].brandSub}</s>
         </Link>
 
         <nav className="hdr__nav" aria-label={t.home}>
